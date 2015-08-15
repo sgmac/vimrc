@@ -51,8 +51,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'mileszs/ack.vim'
-
-
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 "" All of your Plugins must be added before the following line
@@ -202,6 +201,14 @@ set nofoldenable
 " --Tagbar ctags
 nmap <leader>T :TagbarToggle<CR>
 
+" --- Tmux/Vim integration
+
+nnoremap <silent> <ctrl-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <ctrl-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <ctrl-k> :TmuxNavigateUp<cr>
+"nnoremap <silent> <ctrl-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <ctrl-i> :TmuxNavigatePrevious<cr>
+let g:tmux_navigator_save_on_switch = 1
 
   " --- Gvim
 if has("gui_running")
