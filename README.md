@@ -8,7 +8,7 @@ This procedure has been tested on both Debian and OSX systems.
 
 There are some vars that should be modified before starting the installation.
 
-```
+```bash
 " Create the path for holding the swp files
 set backupdir=~/.vimswp
 set directory=~/.vimswp
@@ -27,13 +27,13 @@ If you decide to compile Vim:
 mercurial build-essential cmake```
 
 Bear in mind that Cmake version should be at least 2.8.12.
-```
-   $ hg clone https://vim.googlecode.com/hg/ vim
-   $ cd vim
-   $ ./configure  --with-features=huge   --enable-pythoninterp 
-				--with-python-config-dir=/usr/lib/python2.7/config
-   $ make
-   $ sudo make install
+```bash
+$ git clone https://github.com/vim/vim.git
+$ cd vim
+$ ./configure  --with-features=huge   --enable-pythoninterp 
+     			--with-python-config-dir=/usr/lib/python2.7/config
+$ make
+$ sudo make install
 ```
 
 It's important to set first the python interpreter and after the path to the library, otherwise it does not work. Check the **python-config-dir** exists.
@@ -43,8 +43,10 @@ It's important to set first the python interpreter and after the path to the lib
 
 Before installing vim plugins we need to install Vundle.
 
-        $ mkdir -p $HOME/.vim/bundle && cd $HOME/.vim/bundle
-        $ git clone https://github.com/gmarik/Vundle.vim
+```bash
+$ mkdir -p $HOME/.vim/bundle && cd $HOME/.vim/bundle
+$ git clone https://github.com/gmarik/Vundle.vim
+```
 
 ### Configure your vimrc for Vundle
 
@@ -63,9 +65,9 @@ This awesome tool provides you with autocompletion for Vim.
 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 It takes a while to compile:
-```
-        $ cd $HOME/.vim/bundle/YouCompleteMe
-        $ ./install --clang-completer #  C/C++ support
+```bash
+ $ cd $HOME/.vim/bundle/YouCompleteMe
+ $ ./install --clang-completer #  C/C++ support
 ```
 Check the different options from the install script.
 
@@ -74,10 +76,11 @@ Check the different options from the install script.
 This plugin is a must for Go development, the only thing to have in mind:
 
 **IMPORTANT**: Set up your Go development environment beforhand.
-
-        $ mkdir -p $HOME/projects/gocode/{pkg,src,bin}
-        $ echo "export GOPATH=$HOME/projects/gocode"
-        $ echo "export PATH=$PATH:$GOPATH/bin"
+```bash
+ $ mkdir -p $HOME/projects/gocode/{pkg,src,bin}
+ $ echo "export GOPATH=$HOME/projects/gocode"
+ $ echo "export PATH=$PATH:$GOPATH/bin"
+```
 
 Once you have the environment, open a Vim session and run the command **:GoInstallBinaries**, this fetches some
 tools and installs them on your $GOPATH.
