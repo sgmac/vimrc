@@ -35,6 +35,7 @@ Plugin 'tpope/vim-markdown'
 " Go programming
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 " Python
 Plugin 'klen/python-mode'
@@ -52,6 +53,9 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'junegunn/goyo.vim'
+Plugin 'amix/vim-zenroom2'
 
 
 "" All of your Plugins must be added before the following line
