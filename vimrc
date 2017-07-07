@@ -20,6 +20,8 @@ set smartcase
 set title
 set number
 set gdefault
+" show vim-airline startup
+set laststatus=2
 
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -67,7 +69,7 @@ filetype plugin indent on    " required
 imap jk <ESC>
 nnoremap <space> za
 vnoremap <space> zf
-map      <leader>t :NERDTreeToggle<CR>
+"map      <leader>t :NERDTreeToggle<CR>
 
 " --- Easy window navigation
 map <C-h> <C-w>h
@@ -124,7 +126,7 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 "--- Plugins configuration
-autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
 
 """ python-mode
 
@@ -167,7 +169,7 @@ let g:go_highlight_build_constraints = 1
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
 
-au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>r <Plug>(go-run %)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>tt <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
@@ -186,6 +188,7 @@ let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -194,7 +197,19 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc,*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode =0 
+let g:ctrlp_max_files=0 
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.vim/ctrlp'
+
+
+" -- From github.com/faith/dotfiles
+let g:ctrlp_buftag_types = {
+      \ 'go'     	   : '--language-force=go --golang-types=ftv',
+      \ 'markdown'   : '--language-force=markdown --markdown-types=hik',
+      \ }
 
 set runtimepath+=$HOME/.vim/plugin
 set tags=./tags;~/Projects
@@ -206,7 +221,6 @@ set nofoldenable
 nmap <leader>T :TagbarToggle<CR>
 
 " --- Tmux/Vim integration
-
 nnoremap <silent> <ctrl-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <ctrl-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <ctrl-k> :TmuxNavigateUp<cr>
@@ -214,24 +228,19 @@ nnoremap <silent> <ctrl-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <ctrl-i> :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 1
 
-  " --- Gvim
-if has("gui_running")
-   colorschem badwolf
-   set guioptions-=m
-   set guioptions-=T
-   set guioptions-=r
+" --- Ansible plugin
+let g:ansible_options = {'ignore_blank_lines': 0}
 
-   set guifont=Monaco:h12
+" --- Zenroom2 plugin
+nnoremap <silent> <leader>z :Goyo<cr>
 
-   if has("gui_gtk2")
-                   set guifont=Lucida\ Console\ 11
-                   set guifont=Lucida\ Console\ 11
-   elseif has("x11")
-           " Also for GTK 1
-           set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
-   elseif has("gui_win32")
-           set guifont=Luxi_Mono:h12:cANSI
-   endif
 
-endif
+" --- Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
