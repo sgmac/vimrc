@@ -245,3 +245,21 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+
+""--- Gvim
+if has("gui_running")
+   colorschem badwolf
+   set guioptions-=m
+   set guioptions-=T
+   set guioptions-=r
+   set guifont=Monaco:h12
+   if has("gui_gtk2")
+      set guifont=Lucida\ Console\ 11
+      set guifont=Lucida\ Console\ 11
+   elseif has("x11")
+      " Also for GTK 1
+      set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
+   elseif has("gui_win32")
+      set guifont=Luxi_Mono:h12:cANSI
+    endif
+ endif
