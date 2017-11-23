@@ -1,4 +1,5 @@
 set nocompatible
+
 set background=dark
 set encoding=utf8
 set showcmd
@@ -41,6 +42,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 
 " Python
 Plugin 'klen/python-mode'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " General
 Plugin 'bling/vim-airline'
@@ -58,6 +60,19 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'junegunn/goyo.vim'
 Plugin 'amix/vim-zenroom2'
+
+" Terraform
+Plugin 'hashivim/vim-terraform'
+let g:terraform_align=1
+let g:terraform_remap_spacebar=1
+autocmd FileType terraform setlocal commentstring=#%s
+
+" Markdown
+Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
+
+" HTML
+Plugin 'mattn/emmet-vim'
 
 
 "" All of your Plugins must be added before the following line
@@ -196,7 +211,7 @@ let g:UltiSnipsEditSplit="vertical"
 " -- CtrlP plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_height = 30
-set wildignore+=*.pyc,*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*.pyc,*/tmp/*,*.so,*.swp,*.zip,*/vendor/*
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode =0 
