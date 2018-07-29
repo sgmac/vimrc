@@ -1,5 +1,5 @@
 set nocompatible
-
+colorscheme  molokai
 set background=dark
 set encoding=utf8
 set showcmd
