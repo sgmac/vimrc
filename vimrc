@@ -1,5 +1,10 @@
+set encoding=UTF-8
+
+" This requires to install Hack Nerd Fonts
+let g:webdevicons_enable = 1
+
 set nocompatible
-colorscheme  molokai
+colorscheme  badwolf
 set background=dark
 set encoding=utf8
 set showcmd
@@ -36,22 +41,23 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 
 " Go programming
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
+Plugin 'neoclide/coc.nvim'
+Plugin 'ryanoasis/vim-devicons'
+
 Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'dense-analysis/ale'
 
 " Python
-Plugin 'klen/python-mode'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " General
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
@@ -69,10 +75,19 @@ autocmd FileType terraform setlocal commentstring=#%s
 
 " Markdown
 Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
 
 " HTML
 Plugin 'mattn/emmet-vim'
+
+
+" Coc
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-go',
+\ 'coc-python',
+\ 'coc-yaml',
+\ 'coc-json',
+\ ]
 
 
 "" All of your Plugins must be added before the following line
@@ -112,7 +127,7 @@ map <Leader>c   <esc>:tabnew<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" --- Sort in vistual mode
+" --- Sort in visual mode
 map <Leader>s :sort<CR>
 
  " --- Visual split of line according column=80
@@ -140,42 +155,10 @@ nnoremap <F3> :TlistOpen<CR>
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-"--- Plugins configuration
-"autocmd vimenter * if !argc() | NERDTree | endif
-
-""" python-mode
-
-let g:pymode_rope = 1
-let g:pymode_rope_lookup_project = 0
-
-" Disable check on every save
-let g:pymode_lint_write = 1
-let g:pymode_run_key = 'R'
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-" Auto jump on first error
-let g:pymode_lint_jump = 1
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-autocmd FileType python setlocal number tabstop=4 expandtab shiftwidth=4 softtabstop=4
-
 """ vim-go
 au BufRead,BufNewFile *.go set filetype=go
 let g:go_fmt_command = "goimports"
-let $GOPATH = "/Users/sgm/projects/gocode"
+let g:go_def_mode='gopls'
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -183,7 +166,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_auto_sameids = 1
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
 
 au FileType go nmap <leader>r <Plug>(go-run %)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -198,22 +180,11 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 """ info
 au FileType go nmap <Leader>i <Plug>(go-info)
 
-""" ult-snippets
-" Trigger configuration. Do not use <tab> if you use
-let g:UltiSnipsExpandTrigger="<c-a>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
 " -- CtrlP plugin
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc,*/tmp/*,*.so,*.swp,*.zip,*/vendor/*
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode =0 
 let g:ctrlp_max_files=0 
 let g:ctrlp_use_caching = 1
