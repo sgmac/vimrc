@@ -1,10 +1,8 @@
 set encoding=UTF-8
-
-" This requires to install Hack Nerd Fonts
 let g:webdevicons_enable = 1
 
 set nocompatible
-colorscheme  badwolf
+colorscheme  gruvbox
 set background=dark
 set encoding=utf8
 set showcmd
@@ -31,6 +29,7 @@ set laststatus=2
 
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -51,9 +50,10 @@ Plugin 'dense-analysis/ale'
 " Python
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-" General
+" Global
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -63,9 +63,9 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'chase/vim-ansible-yaml'
 Plugin 'junegunn/goyo.vim'
 Plugin 'amix/vim-zenroom2'
+Plugin 'rodjek/vim-puppet'
 
 " Terraform
 Plugin 'hashivim/vim-terraform'
@@ -79,36 +79,49 @@ Plugin 'godlygeek/tabular'
 " HTML
 Plugin 'mattn/emmet-vim'
 
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+Plugin 'gruvbox-community/gruvbox'
+
+augroup  projectC
+	autocmd BufRead,BufNewFile *.c,*.h set filetype=c
+augroup end
 
 " Coc
 let g:coc_global_extensions = [
 \ 'coc-snippets',
 \ 'coc-go',
 \ 'coc-python',
-\ 'coc-solargraph',
 \ 'coc-yaml',
+\ 'coc-solargraph',
+\ 'coc-rls',
 \ 'coc-json',
 \ ]
 
+" use <tab> for trigger completion and navigate to the next complete item
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+if has('patch8.1.1068')
+  " Use `complete_info` if your (Neo)Vim version supports it.
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 
 "" All of your Plugins must be added before the following line
-call vundle#end()            " required
 syntax on
 filetype plugin indent on    " required
 
@@ -144,7 +157,7 @@ map <Leader>c   <esc>:tabnew<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" --- Sort in visual mode
+" --- Sort in vistual mode
 map <Leader>s :sort<CR>
 
  " --- Visual split of line according column=80
@@ -166,22 +179,35 @@ nnoremap <C-y> 3<C-y>
 
 " Normal mode
 nnoremap <f5> :!ctags -R<CR>
-nnoremap <F3> :TlistOpen<CR>
+nnoremap <f3> :TlistOpen<CR>
 
 " Visual mode
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+"
 """ vim-go
-au BufRead,BufNewFile *.go set filetype=go
+"
 let g:go_fmt_command = "goimports"
 let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+" highlight
 let g:go_highlight_functions = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
 let g:go_auto_sameids = 1
+let g:go_version_warning = 0
+" show type info in statusbar
+let g:go_auto_type_info = 1
+" disable gd mapping of vim-go
+let g:go_def_mapping_enabled = 0
 
 
 au FileType go nmap <leader>r <Plug>(go-run %)
@@ -232,18 +258,12 @@ nnoremap <silent> <ctrl-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <ctrl-i> :TmuxNavigatePrevious<cr>
 let g:tmux_navigator_save_on_switch = 1
 
-" --- Ansible plugin
-let g:ansible_options = {'ignore_blank_lines': 0}
 
 " --- Zenroom2 plugin
 nnoremap <silent> <leader>z :Goyo<cr>
 
 
 " --- Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
