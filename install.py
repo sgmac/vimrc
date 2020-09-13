@@ -11,7 +11,7 @@ import os
 import sys
 
 home = os.getenv('HOME')
-target = os.path.join(home, '.vimrc')
+target = os.path.join(home, '/.config/vim/.vimrc')
 
 pathvimrc = os.getcwd()
 source = os.path.join(pathvimrc,  'vimrc')

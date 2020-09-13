@@ -28,11 +28,15 @@ set gdefault
 set laststatus=2
 
 "set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/vim/bundle/Vundle.vim
 
+
+call vundle#rc("~/.config/vim/bundle")
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'jez/vim-superman'
+Plugin 'qpkorr/vim-bufkill'
 
 " Tim Pope
 Plugin 'tpope/vim-commentary'
@@ -43,17 +47,20 @@ Plugin 'tpope/vim-markdown'
 Plugin 'fatih/vim-go'
 Plugin 'neoclide/coc.nvim'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'autozimu/LanguageClient-neovim'
 
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'dense-analysis/ale'
 
 " Python
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Vimjas/vim-python-pep8-indent'
+
 
 " Global
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -129,7 +136,7 @@ filetype plugin indent on    " required
 imap jk <ESC>
 nnoremap <space> za
 vnoremap <space> zf
-"map      <leader>t :NERDTreeToggle<CR>
+map      <leader>T :NERDTreeToggle<CR>
 
 " --- Easy window navigation
 map <C-h> <C-w>h
@@ -224,9 +231,9 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>i <Plug>(go-info)
 
 " -- CtrlP plugin
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_max_height = 30
+set runtimepath^=~/.config/vim/bundle/ctrlp.vim
 set wildignore+=*.pyc,*/tmp/*,*.so,*.swp,*.zip,*/vendor/*
+let g:ctrlp_max_height = 30
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_working_path_mode =0 
 let g:ctrlp_max_files=0 
@@ -241,14 +248,13 @@ let g:ctrlp_buftag_types = {
       \ 'markdown'   : '--language-force=markdown --markdown-types=hik',
       \ }
 
-set runtimepath+=$HOME/.vim/plugin
 set tags=./tags;~/Projects
 
 " --- Better folding
 set nofoldenable
 
 " --Tagbar ctags
-nmap <leader>T :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
 
 " --- Tmux/Vim integration
 nnoremap <silent> <ctrl-h> :TmuxNavigateLeft<cr>
@@ -268,21 +274,3 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-
-""--- Gvim
-if has("gui_running")
-   colorschem badwolf
-   set guioptions-=m
-   set guioptions-=T
-   set guioptions-=r
-   set guifont=Monaco:h12
-   if has("gui_gtk2")
-      set guifont=Lucida\ Console\ 11
-      set guifont=Lucida\ Console\ 11
-   elseif has("x11")
-      " Also for GTK 1
-      set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
-   elseif has("gui_win32")
-      set guifont=Luxi_Mono:h12:cANSI
-    endif
- endif
