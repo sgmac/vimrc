@@ -23,7 +23,7 @@ let $GOPATH = ""
 Before installing vim plugins we need to install Vundle.
 
 ```bash
-$ mkdir -p $HOME/.vim/bundle && cd $HOME/.vim/bundle
+$ mkdir -p $HOME/.config/vim/bundle && cd $HOME/config/vim/bundle
 $ git clone https://github.com/gmarik/Vundle.vim
 ```
 
@@ -39,8 +39,7 @@ Open vim and run **:VundleInstall**.
 
 ### Coc.vim
 
-I loved [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) but after sometime I was facing errors too often with `vim-go`, therefore I decided to move forward with `coc.nvim`
-
+This requires to install `nodejs/npm`.
 
 ### Vim-go
 
@@ -50,3 +49,14 @@ This plugin is a must for Go development.
 
 Once you have the environment, open a Vim session and run the command **:GoInstallBinaries**, this fetches some
 tools to your $GOPATH.
+
+
+### Installing
+
+From vim run:
+
+- `VundleInstall`
+- `GoInstallBinaries`
+
+From the shell is required to install `LanguageServer` to have completion. Go to `bundle/LangueClient-neovim` and run `install.sh`.
+

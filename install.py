@@ -1,18 +1,24 @@
 #!/usr/bin/env python
 
-# What does the install?
-#  1. Link vimrc to ~/.vimrc
-#  2. If exists, asks the user there is a version (from show date?)
-# .. Do you want to replace?
-#  3. If ~/.vim does not exist, create and link 'colors' inside
-#  4. Clone  Vundle and create structure
-#
+"""
+vim configuration
+"""
 import os
 import sys
 
-home = os.getenv('HOME')
-target = os.path.join(home, '/.config/vim/.vimrc')
+home = os.getenv("HOME")
 
+config_path = os.path.join(home, '.config')
+target = os.path.join(home, '.config/vim/vimrc')
+
+# nvim
+try:
+    os.symlink(os.path.join(os.getcwd(), "nvim"), config_path + "/nvim")
+    os.symlink(os.path.join(os.getcwd(), "colors"), config_path + "/vim/colors")
+except FileExistsError as e:
+    print("file exists")
+
+# vimrc
 pathvimrc = os.getcwd()
 source = os.path.join(pathvimrc,  'vimrc')
 
