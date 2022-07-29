@@ -94,83 +94,12 @@ Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
 Plug 'mattn/emmet-vim'
 
-let g:terraform_align=1
-let g:terraform_remap_spacebar=1
-autocmd FileType terraform setlocal commentstring=#%s
-
-" Markdown
-
 call plug#end()            " required
 
+let g:terraform_align=1
+let g:terraform_remap_spacebar=1
 
-" call vundle#rc("~/.config/vim/bundle")
-" call vundle#begin()
-
-" " Fish
-" Plugin 'dag/vim-fish'
-
-" Plugin 'gmarik/Vundle.vim'
-" Plugin 'jez/vim-superman'
-" Plugin 'qpkorr/vim-bufkill'
-" Plugin 'mtth/scratch.vim'
-
-
-" " Tim Pope
-" Plugin 'tpope/vim-commentary'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-markdown'
-
-" " Go programming
-" Plugin 'fatih/vim-go'
-" Plugin 'neoclide/coc.nvim'
-" Plugin 'ryanoasis/vim-devicons'
-" Plugin 'autozimu/LanguageClient-neovim'
-
-" Plugin 'AndrewRadev/splitjoin.vim'
-" Plugin 'dense-analysis/ale'
-
-" " Python
-" Plugin 'Xuyuanp/nerdtree-git-plugin'
-" Plugin 'Vimjas/vim-python-pep8-indent'
-
-
-" " Global
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'bling/vim-airline'
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'airblade/vim-gitgutter'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
-" Plugin 'majutsushi/tagbar'
-" Plugin 'honza/vim-snippets'
-" Plugin 'Raimondi/delimitMate'
-" Plugin 'fholgado/minibufexpl.vim'
-" Plugin 'mileszs/ack.vim'
-" Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'junegunn/goyo.vim'
-" Plugin 'amix/vim-zenroom2'
-" Plugin 'rodjek/vim-puppet'
-" Plugin 'joshdick/onedark.vim'
-" Plugin 'arcticicestudio/nord-vim'
-" Plugin 'github/copilot.vim'
-
-
-" " Terraform
-" Plugin 'hashivim/vim-terraform'
-" let g:terraform_align=1
-" let g:terraform_remap_spacebar=1
-" autocmd FileType terraform setlocal commentstring=#%s
-
-" " Markdown
-" Plugin 'godlygeek/tabular'
-
-" " HTML
-" Plugin 'mattn/emmet-vim'
-
-" call vundle#end()            " required
-" filetype plugin indent on    " required
-
-" Plugin 'gruvbox-community/gruvbox'
+autocmd FileType terraform setlocal commentstring=#%s
 
 augroup  projectC
 	autocmd BufRead,BufNewFile *.c,*.h set filetype=c
