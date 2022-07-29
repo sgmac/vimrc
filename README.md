@@ -18,6 +18,12 @@ set runtimepath+=$HOME/.vim/plugin
 let $GOPATH = ""
 ```
 
+-- Replace with Plug much faster
+--- don't forget to run `yarn install ` -> CoC
+--- Install  neovim in that python3 version you have (pyenv I'm using)
+--- set python3 environment in configuration (copy line)
+--- install LanguageServer
+
 ### Install Vundle
 
 Before installing vim plugins we need to install Vundle.

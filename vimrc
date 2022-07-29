@@ -1,8 +1,8 @@
 set encoding=UTF-8
 let g:webdevicons_enable = 1
 
+colorscheme monokai
 set nocompatible
-colorscheme  gruvbox
 set background=dark
 set encoding=utf8
 set showcmd
@@ -27,69 +27,150 @@ set gdefault
 " show vim-airline startup
 set laststatus=2
 
+filetype indent plugin on
+set autoindent
+
+nmap ss :split<Return><C-W>
+nmap sv :vsplit<Return><C-W>
+ 
+
 "set the runtime path to include Vundle and initialize
-set rtp+=~/.config/vim/bundle/Vundle.vim
+"set rtp+=~/.config/vim/bundle/Vundle.vim
+set rtp+=~/.config/vim/autoload/plug.vim
 
+call plug#begin("~/.config/vim/plug")
 
-call vundle#rc("~/.config/vim/bundle")
-call vundle#begin()
+" Fish
+Plug 'dag/vim-fish'
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'jez/vim-superman'
-Plugin 'qpkorr/vim-bufkill'
+Plug 'gmarik/Vundle.vim'
+Plug 'jez/vim-superman'
+Plug 'qpkorr/vim-bufkill'
+Plug 'mtth/scratch.vim'
+
 
 " Tim Pope
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 
 " Go programming
-Plugin 'fatih/vim-go'
-Plugin 'neoclide/coc.nvim'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'autozimu/LanguageClient-neovim'
+Plug 'fatih/vim-go'
+Plug 'neoclide/coc.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'autozimu/LanguageClient-neovim'
 
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'dense-analysis/ale'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'dense-analysis/ale'
 
 " Python
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Vimjas/vim-python-pep8-indent'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Vimjas/vim-python-pep8-indent'
+
+let g:python_host_prog  = '/home/sgm/.pyenv/versions/3.9.9/bin/python'
 
 
 " Global
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'bling/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'honza/vim-snippets'
-Plugin 'Raimondi/delimitMate'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'junegunn/goyo.vim'
-Plugin 'amix/vim-zenroom2'
-Plugin 'rodjek/vim-puppet'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'honza/vim-snippets'
+Plug 'Raimondi/delimitMate'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'mileszs/ack.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
+Plug 'rodjek/vim-puppet'
+Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'github/copilot.vim'
+Plug 'gruvbox-community/gruvbox'
+Plug 'hashivim/vim-terraform'
+Plug 'godlygeek/tabular'
+Plug 'mattn/emmet-vim'
 
-" Terraform
-Plugin 'hashivim/vim-terraform'
 let g:terraform_align=1
 let g:terraform_remap_spacebar=1
 autocmd FileType terraform setlocal commentstring=#%s
 
 " Markdown
-Plugin 'godlygeek/tabular'
 
-" HTML
-Plugin 'mattn/emmet-vim'
+call plug#end()            " required
 
-call vundle#end()            " required
-filetype plugin indent on    " required
 
-Plugin 'gruvbox-community/gruvbox'
+" call vundle#rc("~/.config/vim/bundle")
+" call vundle#begin()
+
+" " Fish
+" Plugin 'dag/vim-fish'
+
+" Plugin 'gmarik/Vundle.vim'
+" Plugin 'jez/vim-superman'
+" Plugin 'qpkorr/vim-bufkill'
+" Plugin 'mtth/scratch.vim'
+
+
+" " Tim Pope
+" Plugin 'tpope/vim-commentary'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-markdown'
+
+" " Go programming
+" Plugin 'fatih/vim-go'
+" Plugin 'neoclide/coc.nvim'
+" Plugin 'ryanoasis/vim-devicons'
+" Plugin 'autozimu/LanguageClient-neovim'
+
+" Plugin 'AndrewRadev/splitjoin.vim'
+" Plugin 'dense-analysis/ale'
+
+" " Python
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Plugin 'Vimjas/vim-python-pep8-indent'
+
+
+" " Global
+" Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'bling/vim-airline'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'airblade/vim-gitgutter'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'honza/vim-snippets'
+" Plugin 'Raimondi/delimitMate'
+" Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'mileszs/ack.vim'
+" Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'junegunn/goyo.vim'
+" Plugin 'amix/vim-zenroom2'
+" Plugin 'rodjek/vim-puppet'
+" Plugin 'joshdick/onedark.vim'
+" Plugin 'arcticicestudio/nord-vim'
+" Plugin 'github/copilot.vim'
+
+
+" " Terraform
+" Plugin 'hashivim/vim-terraform'
+" let g:terraform_align=1
+" let g:terraform_remap_spacebar=1
+" autocmd FileType terraform setlocal commentstring=#%s
+
+" " Markdown
+" Plugin 'godlygeek/tabular'
+
+" " HTML
+" Plugin 'mattn/emmet-vim'
+
+" call vundle#end()            " required
+" filetype plugin indent on    " required
+
+" Plugin 'gruvbox-community/gruvbox'
 
 augroup  projectC
 	autocmd BufRead,BufNewFile *.c,*.h set filetype=c
