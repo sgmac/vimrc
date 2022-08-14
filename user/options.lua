@@ -1,0 +1,23 @@
+-- :help options
+vim.opt.background='dark'
+vim.opt.backspace='indent,eol,start'
+vim.opt.backup = false 
+vim.opt.encoding =  'utf8'
+vim.opt.gdefault = true
+vim.opt.hidden   = true
+vim.opt.history=10000
+vim.opt.hlsearch = true
+vim.opt.ignorecase= true
+vim.opt.incsearch = true
+vim.opt.number   = true
+vim.opt.scrolloff=3
+vim.opt.showcmd = true
+vim.opt.showmode = true
+vim.opt.smartcase= true
+vim.opt.title    = true
+vim.opt.undolevels=10000
+vim.opt.wildmenu = true
+vim.opt.wildmode='list:longest'
+vim.opt.laststatus=2
+vim.opt.autoindent=true
+vim.opt.relativenumber = true
