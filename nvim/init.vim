@@ -9,4 +9,4 @@ let g:LanguageClient_serverCommands = {
 " Run gofmt on save
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 
-source ~/.config/vim/.vimrc
+source ~/.config/vim/vimrc
