@@ -6,33 +6,16 @@ My vim configuration changes overtime. After watching a Luke Smith's video about
 
 There are some vars that should be modified before starting the installation.
 
-```bash
-" Create the path for holding the swp files
-set backupdir=~/.vimswp
-set directory=~/.vimswp
-
-
 " Set your path
 let $GOPATH = ""
 ```
 
-### Install Plug
+### Packer
 
-Before installing any vim plugins, install Plug.
-
-```bash
-$ cd ~/.config/vim
-$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \   
-                    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+$ .local/share/nvim/site/pack/packer/start/coc.nvim
 ```
 
-### Configure Plug
-
-call plug#begin("~/.config/vim/plug")
-// Plugins
-call plug#end()          
-
-Open vim and run **:PlugInstall**.
 
 ### Coc.vim
 
