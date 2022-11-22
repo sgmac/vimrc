@@ -1,4 +1,5 @@
--- :help options
+-- Getting the bits from chris@machine
+vim.opt.autoindent=true
 vim.opt.background='dark'
 vim.opt.backspace='indent,eol,start'
 vim.opt.backup = false 
@@ -9,7 +10,11 @@ vim.opt.history=10000
 vim.opt.hlsearch = true
 vim.opt.ignorecase= true
 vim.opt.incsearch = true
+vim.opt.laststatus=2
+vim.opt.splitbelow=true
+vim.opt.splitright=true
 vim.opt.number   = true
+vim.opt.relativenumber = true
 vim.opt.scrolloff=3
 vim.opt.showcmd = true
 vim.opt.showmode = true
@@ -18,6 +23,3 @@ vim.opt.title    = true
 vim.opt.undolevels=10000
 vim.opt.wildmenu = true
 vim.opt.wildmode='list:longest'
-vim.opt.laststatus=2
-vim.opt.autoindent=true
-vim.opt.relativenumber = true
