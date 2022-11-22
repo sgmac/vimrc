@@ -1,6 +1,7 @@
 set encoding=UTF-8
 let g:webdevicons_enable = 1
 
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 colorscheme monokai
 set nocompatible
 set background=dark
@@ -88,7 +89,7 @@ Plug 'amix/vim-zenroom2'
 Plug 'rodjek/vim-puppet'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'github/copilot.vim'
+"Plug 'github/copilot.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
@@ -116,15 +117,18 @@ let g:coc_global_extensions = [
 \ 'coc-json',
 \ ]
 
-" use <tab> for trigger completion and navigate to the next complete item
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+"use <tab> for trigger completion and navigate to the next complete item
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<C-a>" :
       \ coc#refresh()
 
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
+inoremap <silent><expr> <c-space> coc#refresh()
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'

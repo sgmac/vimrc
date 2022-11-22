@@ -36,7 +36,18 @@ Open vim and run **:PlugInstall**.
 
 ### Coc.vim
 
-This requires to install `nodejs/npm`.
+This requires to install `nodejs/npm`. This requires 
+
+```
+ │  Current Node.js version v12.22.9 < 14.14.0
+```
+
+Install neovim extensions
+
+```
+$ npm install neovim`
+$ pip install pyx
+```
 
 ```
 $ cd ~/.config/vim/plug/coc.nvim
@@ -49,6 +60,8 @@ $ npm install
 $ cd /home/sgm/.config/vim/plug/LanguageClient-neovim
 $ ./install.sh
 ```
+
+## Devicons
 
 ## Vim-go
 
