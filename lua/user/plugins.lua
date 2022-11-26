@@ -48,11 +48,16 @@ return packer.startup(function(use)
   use "dag/vim-fish"
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
-
   -- coding
   use "fatih/vim-go"
-  use "neoclide/coc.nvim"
   use "autozimu/LanguageClient-neovim"
+  use 'neoclide/coc.nvim'
+
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+     "neovim/nvim-lspconfig",
+  }
 
   use {
   'nvim-tree/nvim-tree.lua',
@@ -60,9 +65,6 @@ return packer.startup(function(use)
     'nvim-tree/nvim-web-devicons', -- optional, for file icons
     }
   }
-
-
-
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

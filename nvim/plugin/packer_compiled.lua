@@ -74,10 +74,30 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["LanguageClient-neovim"] = {
+    loaded = true,
+    path = "/home/sgm/.local/share/nvim/site/pack/packer/start/LanguageClient-neovim",
+    url = "https://github.com/autozimu/LanguageClient-neovim"
+  },
   ["coc.nvim"] = {
     loaded = true,
     path = "/home/sgm/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/sgm/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/sgm/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/sgm/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
