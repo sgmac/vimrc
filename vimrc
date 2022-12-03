@@ -94,6 +94,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
 Plug 'mattn/emmet-vim'
+Plug 'EdenEast/nightfox.nvim'
 
 call plug#end()            " required
 
