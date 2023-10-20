@@ -1,5 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/sgm'
-let g:netrw_dirhist_2='/home/sgm/.berkshelf'
-let g:netrw_dirhist_1='/home/sgm'
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/sgm/projects/talk-lets-auth-with-go'
